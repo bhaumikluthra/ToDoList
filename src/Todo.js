@@ -1,10 +1,9 @@
 import React from "react";
 
-function Todo({ todo, onToggle }) {
+function Todo({ todo, onToggle, onDelete }) {
   return (
     <div style={styles.todo}>
       <span
-        onClick={onToggle}
         style={{
           ...styles.text,
           textDecoration: todo.completed ? "line-through" : "none",
@@ -13,6 +12,10 @@ function Todo({ todo, onToggle }) {
       >
         {todo.text}
       </span>
+      <button onClick={onToggle} style={styles.doneBtn}>
+        {todo.completed ? "Undo" : "Mark as Done"}
+      </button>
+      <button onClick={onDelete} style={styles.deleteBtn}>❌</button>
     </div>
   );
 }
@@ -32,7 +35,17 @@ const styles = {
     background: "none",
     border: "none",
     cursor: "pointer",
-    fontSize: "16px"
+    fontSize: "16px",
+    marginLeft: "8px"
+  },
+  doneBtn: {
+    background: "#4caf50",
+    color: "white",
+    border: "none",
+    borderRadius: "4px",
+    padding: "5px 10px",
+    cursor: "pointer",
+    fontSize: "14px"
   }
 };
 

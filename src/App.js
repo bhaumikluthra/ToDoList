@@ -18,6 +18,10 @@ function App() {
     setTodos(updatedTodos);
   };
 
+  const deleteTodo = (index) => {
+    const updatedTodos = todos.filter((_, i) => i !== index);
+    setTodos(updatedTodos);
+  };
 
   return (
     <div style={styles.container}>
@@ -37,6 +41,7 @@ function App() {
           key={index}
           todo={todo}
           onToggle={() => toggleTodo(index)}
+          onDelete={() => deleteTodo(index)}
         />
       ))}
     </div>
